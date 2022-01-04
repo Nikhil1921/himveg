@@ -482,7 +482,7 @@
                         @endif
                     <!--user section ends here-->
 
-                        @if(\App\CPU\Helpers::module_permission_check('support_section'))
+                        {{-- @if(\App\CPU\Helpers::module_permission_check('support_section'))
                             <li class="nav-item {{(Request::is('admin/support-ticket*') || Request::is('admin/contact*'))?'scroll-here':''}}">
                                 <small class="nav-subtitle" title="">{{\App\CPU\translate('support_section')}}</small>
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
@@ -506,7 +506,7 @@
                                 </span>
                                 </a>
                             </li>
-                        @endif
+                        @endif --}}
                     <!--support section ends here-->
 
                         @if(\App\CPU\Helpers::module_permission_check('business_settings'))

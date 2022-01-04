@@ -195,7 +195,7 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item {{Request::is('seller/product/bulk-import')?'active':''}}">
+                                {{-- <li class="nav-item {{Request::is('seller/product/bulk-import')?'active':''}}">
                                     <a class="nav-link " href="{{route('seller.product.bulk-import')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{\App\CPU\translate('bulk_import')}}</span>
@@ -207,7 +207,7 @@
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{\App\CPU\translate('bulk_export')}}</span>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </li>
 
@@ -222,7 +222,7 @@
                         </li>
 
 
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('seller/messages*')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('seller/messages*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('seller.messages.chat')}}">
                                 <i class="tio-email nav-icon"></i>
@@ -230,7 +230,7 @@
                                     {{\App\CPU\translate('messages')}}
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="navbar-vertical-aside-has-menu {{Request::is('seller/profile*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('seller.profile.view')}}">

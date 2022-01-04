@@ -106,7 +106,7 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <label for="name">{{\App\CPU\translate('Brand')}}</label>
                                         <select
                                             class="js-example-basic-multiple js-states js-example-responsive form-control"
@@ -116,7 +116,7 @@
                                                 <option value="{{$b['id']}}">{{$b['name']}}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-6">
                                         <label for="name">{{\App\CPU\translate('Unit')}}</label>

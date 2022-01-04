@@ -102,7 +102,8 @@
                     </thead>
 
                     <tbody>
-                    @foreach($orders as $key=>$order)
+                        @php $total = 0 @endphp
+                    @foreach($orders as $key=>$order) @php $total += $order->order_amount @endphp
 
                         <tr class="status-{{$order['order_status']}} class-all">
                             <td class="">
@@ -188,6 +189,20 @@
                         </tr>
                     @endforeach
                     </tbody>
+                    <tfoot class="thead-light">
+                    <tr>
+                        <th class="">
+                            {{\App\CPU\translate('SL')}}#
+                        </th>
+                        <th class=" ">{{\App\CPU\translate('Order')}}</th>
+                        <th>{{\App\CPU\translate('Date')}}</th>
+                        <th>{{\App\CPU\translate('customer_name')}}</th>
+                        <th>{{\App\CPU\translate('Status')}}</th>
+                        <th>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total))}}</th>
+                        <th>{{\App\CPU\translate('Order')}} {{\App\CPU\translate('Status')}} </th>
+                        <th>{{\App\CPU\translate('Action')}}</th>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
             <!-- End Table -->

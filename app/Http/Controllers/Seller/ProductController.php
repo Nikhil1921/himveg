@@ -74,7 +74,7 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id' => 'required',
-            'brand_id' => 'required',
+            /* 'brand_id' => 'required', */
             'unit' => 'required',
             'images' => 'required',
             'image' => 'required',
@@ -86,7 +86,7 @@ class ProductController extends Controller
             'category_id.required' => 'category  is required!',
             'images.required' => 'Product images is required!',
             'image.required' => 'Product thumbnail is required!',
-            'brand_id.required' => 'brand  is required!',
+            /* 'brand_id.required' => 'brand  is required!', */
             'unit.required' => 'Unit  is required!',
         ]);
 
@@ -132,7 +132,8 @@ class ProductController extends Controller
         }
 
         $product->category_ids = json_encode($category);
-        $product->brand_id = $request->brand_id;
+        /* $product->brand_id = $request->brand_id; */
+        $product->brand_id = 0;
         $product->unit = $request->unit;
         $product->details = $request->description[array_search('en', $request->lang)];
 
@@ -340,7 +341,7 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id' => 'required',
-            'brand_id' => 'required',
+            /* 'brand_id' => 'required', */
             'unit' => 'required',
             'tax' => 'required|min:0',
             'unit_price' => 'required|numeric|min:1',
@@ -348,7 +349,7 @@ class ProductController extends Controller
         ], [
             'name.required' => 'Product name is required!',
             'category_id.required' => 'category  is required!',
-            'brand_id.required' => 'brand  is required!',
+            /* 'brand_id.required' => 'brand  is required!', */
             'unit.required' => 'Unit  is required!',
         ]);
 
@@ -387,7 +388,8 @@ class ProductController extends Controller
             ]);
         }
         $product->category_ids = json_encode($category);
-        $product->brand_id = $request->brand_id;
+        $product->brand_id = 0;
+        // $product->brand_id = $request->brand_id;
         $product->unit = $request->unit;
         $product->details = $request->description[array_search('en', $request->lang)];
 
