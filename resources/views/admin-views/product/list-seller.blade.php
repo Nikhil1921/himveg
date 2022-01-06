@@ -30,7 +30,7 @@
         <div class="row" style="margin-top: 20px">
             <div class="col-md-12">
                 <div class="card">
-                    @if($pro->first() != null && $pro->first()->added_by == 'in_house')
+                    {{-- @if($pro->first() != null && $pro->first()->added_by == 'in_house')
                         <div class="card-header">
                             <h5>{{\App\CPU\translate('product_table')}}</h5>
                             <a href="{{route('admin.product.add-new')}}" class="btn btn-primary  float-right">
@@ -38,7 +38,7 @@
                                 <span class="text">{{\App\CPU\translate('Add new product')}}</span>
                             </a>
                         </div>
-                    @endif
+                    @endif --}}
                     <div class="card-body" style="padding: 0">
                         <div class="table-responsive">
                             <table id="datatable"

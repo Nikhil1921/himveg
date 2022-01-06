@@ -72,10 +72,16 @@
                             <h5 class="black">{{\App\CPU\translate('Shop')}} {{\App\CPU\translate('Info')}}</h5>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0 ">
-                                    <input type="text" class="form-control form-control-user" id="shop_name" name="shop_name" placeholder="{{\App\CPU\translate('shop_name')}}" value="{{old('shop_name')}}"required>
+                                    <input type="text" class="form-control form-control-user" id="shop_name" name="shop_name" placeholder="{{\App\CPU\translate('shop_name')}}" value="{{old('shop_name')}}" required>
                                 </div>
-                                <div class="col-sm-6">
-                                    <textarea name="shop_address" class="form-control" id="shop_address"rows="1" placeholder="{{\App\CPU\translate('shop_address')}}">{{old('shop_address')}}</textarea>
+                                <div class="col-sm-6 location">
+                                    <textarea name="shop_address" class="form-control" id="shop_address" rows="1" placeholder="{{\App\CPU\translate('shop_address')}}" required>{{old('shop_address')}}</textarea>
+                                    <fieldset class="details" style="display: none;">
+                                        <input name="lat" type="text" value="">
+                                        <input name="lng" type="text" value="">
+                                        <input name="sublocality" type="text" value="">
+                                        <input name="locality" type="text" value="">
+                                    </fieldset>
                                 </div>
                             </div>
                             <div class="">
@@ -124,6 +130,21 @@
 </div>
 @endsection
 @push('script')
+<script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiWWB6yJd6ilpII5N89O-vXAo2eXiVD9g&sensor=false&libraries=places"></script>
+<script src="{{asset('public/assets/front-end/js/jquery.geocomplete.min.js')}}"></script>
+<script>
+  $(function(){
+    $("#shop_address").geocomplete({
+      details: ".details",
+      detailsScope: '.location',
+      types: ["geocode", "establishment"],
+    });
+        
+    $(".find").click(function(){
+      $(this).parents(".location").find("#shop_address").trigger("geocode");
+    });
+  });
+</script>
 @if ($errors->any())
     <script>
         @foreach($errors->all() as $error)

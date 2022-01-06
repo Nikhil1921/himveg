@@ -47,8 +47,27 @@ class WebController extends Controller
         return redirect()->route('home');
     }
 
+    public function location()
+    {
+        if(session('lat') != null && session('lng') != null){
+            return redirect()->route('home');
+        }else{
+            return view('web-views.location');
+        }
+    }
+
+    public function location_post(Request $request)
+    {
+        session()->put(['lat' => $request->lat, 'lng' => $request->lng]);
+        
+        die(json_encode(['status' => 'OK']));
+    }
+
     public function home()
     {
+        /* if(! session('lat') || ! session('lng')){
+            return redirect()->route('location');
+        } */
         $home_categories = Category::where('home_status', true)->get();
         $home_categories->map(function ($data) {
             $data['products'] = Product::active()->whereJsonContains('category_ids', ["id" => (string)$data['id']])->inRandomOrder()->take(12)->get();

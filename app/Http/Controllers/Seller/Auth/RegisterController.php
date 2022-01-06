@@ -19,7 +19,6 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'email' => 'required|unique:sellers',
             'password' => 'required|min:8',
@@ -30,6 +29,8 @@ class RegisterController extends Controller
             $seller->f_name = $request->f_name;
             $seller->l_name = $request->l_name;
             $seller->phone = $request->phone;
+            $seller->lat = $request->lat;
+            $seller->lng = $request->lng;
             $seller->email = $request->email;
             $seller->image = ImageManager::upload('seller/', 'png', $request->file('image'));
             $seller->password = bcrypt($request->password);
