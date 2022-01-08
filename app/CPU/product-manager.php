@@ -16,9 +16,11 @@ class ProductManager
         return Product::active()->with(['rating'])->where('id', $id)->first();
     }
 
-    public static function get_latest_products($limit = 10, $offset = 1)
+    public static function get_latest_products($limit = 10, $offset = 1, $lat, $lng)
     {
-        $paginator = Product::active()->with(['rating'])->latest()->paginate($limit, ['*'], 'page', $offset);
+        $paginator = Product::active(['lat' => $lat, 'lng' => $lng])->with(['rating'])->latest()
+                                      ->paginate($limit, ['*'], 'page', $offset);
+        
         /*$paginator->count();*/
         return [
             'total_size' => $paginator->total(),

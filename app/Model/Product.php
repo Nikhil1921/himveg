@@ -36,13 +36,28 @@ class Product extends Model
         return $this->morphMany('App\Model\Translation', 'translationable');
     }
 
-    public function scopeActive($query)
+    public function scopeActive($query, $data=[])
     {
-        return $query->whereHas('seller', function ($query) {
-            $query->where(['status' => 'approved']);
-        })->where(['status' => 1])->orWhere(function ($query) {
+        if ($data && isset($data['lat']) && isset($data['lng'])) {
+            $distance = '(  6371 * acos (
+                            cos ( radians('.$data['lat'].') )
+                            * cos( radians( lat ) )
+                            * cos( radians( lng ) - radians('.$data['lng'].') )
+                            + sin ( radians('.$data['lat'].') )
+                            * sin( radians( lat ) )
+                            )
+                        ) AS distance';
+            return $query->whereHas('seller', function ($query) use ($distance) {
+                $query->select(DB::raw('*, '.$distance))->where(['status' => 'approved'])->having('distance', '<=', 10);
+            })->where(['status' => 1]);
+        }else{
+            return $query->whereHas('seller', function ($query) {
+                $query->where(['status' => 'approved']);
+            })->where(['status' => 1]);
+        }
+        /* ->where(['status' => 1])->orWhere(function ($query) use ($distance) {
             $query->where(['added_by' => 'admin', 'status' => 1]);
-        });
+        }); */
     }
 
     public function stocks()

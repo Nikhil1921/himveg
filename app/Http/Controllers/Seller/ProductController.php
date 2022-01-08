@@ -29,8 +29,8 @@ class ProductController extends Controller
     public function add_new()
     {
         $cat = Category::where(['parent_id' => 0])->get();
-        $br = Brand::orderBY('name', 'ASC')->get();
-        return view('seller-views.product.add-new', compact('cat', 'br'));
+        
+        return view('seller-views.product.add-new', compact('cat'));
     }
 
     public function status_update(Request $request)

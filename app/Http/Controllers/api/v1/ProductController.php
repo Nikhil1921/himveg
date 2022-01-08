@@ -23,7 +23,16 @@ class ProductController extends Controller
 {
     public function get_latest_products(Request $request)
     {
-        $products = ProductManager::get_latest_products($request['limit'], $request['offset']);
+        $validator = Validator::make($request->all(), [
+            'lat' => 'required',
+            'lng' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+
+        $products = ProductManager::get_latest_products($request['limit'], $request['offset'], $request['lat'], $request['lng']);
         $products['products'] = Helpers::product_data_formatting($products['products'], true);
         return response()->json($products, 200);
     }
