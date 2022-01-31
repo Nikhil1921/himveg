@@ -103,7 +103,7 @@
                                         <option
                                             value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{\App\CPU\translate('Processing')}} </option>
 
-                                        @if( $order->shipping->creator_type != 'admin')
+                                        {{-- @if( $order->shipping->creator_type != 'admin') --}}
                                             <option
                                                 value="out_for_delivery" {{$order->order_status == 'out_for_delivery'?'selected':''}} >{{\App\CPU\translate('out_for_delivery')}} </option>
                                             <option
@@ -114,7 +114,7 @@
                                                 value="failed" {{$order->order_status == 'failed'?'selected':''}} >{{\App\CPU\translate('Failed')}} </option>
                                             <option
                                                 value="canceled" {{$order->order_status == 'canceled'?'selected':''}} >{{\App\CPU\translate('Canceled')}} </option>
-                                        @endif
+                                        {{-- @endif --}}
                                     </select>
                                 </div>
                             </div>
@@ -180,11 +180,11 @@
                                     <h6 class="mx-1"
                                         style="color: #8a8a8a;">{{str_replace('_',' ',$order['transaction_ref'])}}</h6>
                                 </div>
-                                <div class="flex-end">
+                                {{-- <div class="flex-end">
                                     <h6 style="color: #8a8a8a;">{{\App\CPU\translate('shipping')}} {{\App\CPU\translate('method')}}
                                         :</h6>
                                     <h6 class="mx-1" style="color: #8a8a8a;">{{$order->shipping->title}}</h6>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

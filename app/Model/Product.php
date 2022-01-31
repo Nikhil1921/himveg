@@ -48,7 +48,7 @@ class Product extends Model
                             )
                         ) AS distance';
             return $query->whereHas('seller', function ($query) use ($distance) {
-                $query->select(DB::raw('*, '.$distance))->where(['status' => 'approved'])->having('distance', '<=', 10);
+                $query->select(DB::raw('*, '.$distance))->where(['status' => 'approved'])->having('distance', '<=', 3);
             })->where(['status' => 1]);
         }else{
             return $query->whereHas('seller', function ($query) {

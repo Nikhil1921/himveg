@@ -19,8 +19,8 @@ class CategoryManager
         return $x;
     }
 
-    public static function products($category_id)
+    public static function products($category_id, $lat, $lng)
     {
-        return Product::active()->whereJsonContains('category_ids', ["id" => (string)$category_id])->get();
+        return Product::active(['lat' => $lat, 'lng' => $lng])->whereJsonContains('category_ids', ["id" => (string)$category_id])->get();
     }
 }
