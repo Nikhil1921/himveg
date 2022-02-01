@@ -19,7 +19,7 @@ class PassportAuthController extends Controller
             'l_name' => 'required',
             'email' => 'required|unique:users',
             'phone' => 'required|unique:users',
-            'password' => 'required|min:8',
+            // 'password' => 'required|min:8',
         ], [
             'f_name.required' => 'The first name field is required.',
             'l_name.required' => 'The last name field is required.',
@@ -56,7 +56,7 @@ class PassportAuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required',
-            'password' => 'required|min:6'
+            // 'password' => 'required|min:6'
         ]);
 
         if ($validator->fails()) {
@@ -64,7 +64,8 @@ class PassportAuthController extends Controller
         }
 
         $user_id = $request['email'];
-        if (filter_var($user_id, FILTER_VALIDATE_EMAIL)) {
+        $medium = 'phone';
+        /* if (filter_var($user_id, FILTER_VALIDATE_EMAIL)) {
             $medium = 'email';
         } else {
             $count = strlen(preg_replace("/[^\d]/", "", $user_id));
@@ -77,25 +78,25 @@ class PassportAuthController extends Controller
                     'errors' => $errors
                 ], 403);
             }
-        }
+        } */
 
         $data = [
             $medium => $user_id,
-            'password' => $request->password
+            // 'password' => $request->password
         ];
-
+        
         $user = User::where([$medium => $user_id])->first();
 
-        if (isset($user) && $user->is_active && auth()->attempt($data)) {
+        if (isset($user) && $user->is_active) {
             $user->temporary_token = Str::random(40);
             $user->save();
 
             $phone_verification = Helpers::get_business_settings('phone_verification');
             $email_verification = Helpers::get_business_settings('email_verification');
-            if ($phone_verification && !$user->is_phone_verified) {
+            if ($phone_verification) {
                 return response()->json(['temporary_token' => $user->temporary_token], 200);
             }
-            if ($email_verification && !$user->is_email_verified) {
+            if ($email_verification) {
                 return response()->json(['temporary_token' => $user->temporary_token], 200);
             }
 

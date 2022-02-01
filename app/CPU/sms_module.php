@@ -11,7 +11,9 @@ class SMS_module
 {
     public static function send($receiver, $otp)
     {
-        $config = self::get_settings('twilio_sms');
+        $response = self::densetek($receiver, $otp);
+        return $response;
+        /* $config = self::get_settings('twilio_sms');
         if (isset($config) && $config['status'] == 1) {
             $response = self::twilio($receiver, $otp);
             return $response;
@@ -39,7 +41,7 @@ class SMS_module
         if (isset($config) && $config['status'] == 1) {
             $response = self::releans($receiver, $otp);
             return $response;
-        }
+        } */
 
         return 'not_found';
     }
@@ -120,6 +122,32 @@ class SMS_module
             curl_close($curl);
 
             if (!$err) {
+                $response = 'success';
+            } else {
+                $response = 'error';
+            }
+        }
+        return $response;
+    }
+
+    public static function densetek($receiver, $otp)
+    {
+        $response = 'error';
+        if($_SERVER['HTTP_HOST'] != 'localhost'){
+            $from = 'wcserv';
+            $key = '2612F22D485872';
+            $sms = "$otp WCS OTP FOR LOGIN THANKU FOR SINGHUP";
+            $url = "key=".$key."&campaign=12188&routeid=7&type=text&contacts=".$receiver."&senderid=".$from."&msg=".urlencode($sms)."&template_id=1707162797401861012";
+    
+            $base_URL = 'http://denseteklearning.com/app/smsapi/index?'.$url;
+    
+            $curl_handle = curl_init();
+            curl_setopt($curl_handle,CURLOPT_URL,$base_URL);
+            curl_setopt($curl_handle,CURLOPT_CONNECTTIMEOUT,2);
+            curl_setopt($curl_handle,CURLOPT_RETURNTRANSFER,1);
+            $result = curl_exec($curl_handle);
+            curl_close($curl_handle);
+            if ($result) {
                 $response = 'success';
             } else {
                 $response = 'error';

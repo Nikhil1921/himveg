@@ -85,6 +85,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::post('update/{id}', 'EmployeeController@update');
         });
 
+        Route::group(['prefix' => 'delivery-boy', 'as' => 'delivery-boy.','middleware'=>['module:delivery-boy_section']], function () {
+            Route::get('add-new', 'DeliveryBoyController@add_new')->name('add-new');
+            Route::post('add-new', 'DeliveryBoyController@store');
+            Route::get('list', 'DeliveryBoyController@list')->name('list');
+            Route::get('update/{id}', 'DeliveryBoyController@edit')->name('update');
+            Route::post('update/{id}', 'DeliveryBoyController@update');
+        });
+
         Route::group(['prefix' => 'category', 'as' => 'category.','middleware'=>['module:product_management']], function () {
             Route::get('view', 'CategoryController@index')->name('view');
             Route::get('fetch', 'CategoryController@fetch')->name('fetch');

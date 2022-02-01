@@ -32,6 +32,10 @@ class RegisterController extends Controller
             $seller->lat = $request->lat;
             $seller->lng = $request->lng;
             $seller->email = $request->email;
+            $seller->bank_name = $request->bank_name;
+            $seller->branch = $request->branch;
+            $seller->account_no = $request->account_no;
+            $seller->holder_name = $request->holder_name;
             $seller->image = ImageManager::upload('seller/', 'png', $request->file('image'));
             $seller->password = bcrypt($request->password);
             $seller->status = "pending";
@@ -42,6 +46,7 @@ class RegisterController extends Controller
             $shop->name = $request->shop_name;
             $shop->address = $request->shop_address;
             $shop->contact = $request->phone;
+            $shop->category_id = $request->category_id;
             $shop->image = ImageManager::upload('shop/', 'png', $request->file('logo'));
             $shop->banner = ImageManager::upload('shop/banner/', 'png', $request->file('banner'));
             $shop->save();

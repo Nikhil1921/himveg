@@ -12,7 +12,6 @@
 @section('content')
 
 <div class="container main-card rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-
     <div class="card o-hidden border-0 shadow-lg my-4">
         <div class="card-body ">
             <!-- Nested Row within Card Body -->
@@ -35,10 +34,10 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0 mt-4">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" value="{{old('email')}}" placeholder="{{\App\CPU\translate('email_address')}}" required>
                                 </div>
-                                <div class="col-sm-6"><small class="text-danger">( * {{\App\CPU\translate('country_code_is_must')}} {{\App\CPU\translate('like_for_BD_880')}} )</small>
+                                <div class="col-sm-6">
                                     <input type="number" class="form-control form-control-user" id="exampleInputPhone" name="phone" value="{{old('phone')}}" placeholder="{{\App\CPU\translate('phone_number')}}" required>
                                 </div>
                             </div>
@@ -49,6 +48,30 @@
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user" minlength="6" id="exampleRepeatPassword" placeholder="{{\App\CPU\translate('repeat_password')}}" required>
                                     <div class="pass invalid-feedback">{{\App\CPU\translate('Repeat')}}  {{\App\CPU\translate('password')}} {{\App\CPU\translate('not match')}} .</div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <input type="text" name="bank_name" value="{{ old('bank_name') }}"
+                                            class="form-control" id="bank_name" placeholder="{{\App\CPU\translate('Bank Name')}}"
+                                            required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="branch" value="{{ old('branch') }}" class="form-control"
+                                            id="branch" placeholder="{{\App\CPU\translate('Branch Name')}}"
+                                            required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <input type="text" name="holder_name" value="{{ old('holder_name') }}"
+                                            class="form-control" id="holder_name" placeholder="{{\App\CPU\translate('Holder Name')}}"
+                                            required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" name="account_no" value="{{ old('account_no') }}"
+                                               class="form-control" id="account_no" placeholder="{{\App\CPU\translate('Account No')}}"
+                                               required>
                                 </div>
                             </div>
                             <div class="">
@@ -67,11 +90,9 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <h5 class="black">{{\App\CPU\translate('Shop')}} {{\App\CPU\translate('Info')}}</h5>
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0 ">
+                                <div class="col-sm-4 mb-3 mb-sm-0 ">
                                     <input type="text" class="form-control form-control-user" id="shop_name" name="shop_name" placeholder="{{\App\CPU\translate('shop_name')}}" value="{{old('shop_name')}}" required>
                                 </div>
                                 <div class="col-sm-6 location">
@@ -82,6 +103,15 @@
                                         <input name="sublocality" type="text" value="">
                                         <input name="locality" type="text" value="">
                                     </fieldset>
+                                </div>
+                                <div class="col-sm-2">
+                                    <select
+                                        class="js-example-basic-multiple form-control"
+                                        name="category_id"
+                                        required>
+                                        <option value="Fruits">Fruits</option>
+                                        <option value="Vegitables">Vegitables</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="">
@@ -100,7 +130,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="">
+                            {{-- <div class="">
                                 <div class="pb-1">
                                     <center>
                                         <img style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px;" id="viewerBanner"
@@ -115,7 +145,7 @@
                                         <label class="custom-file-label" for="BannerUpload">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('Banner')}}</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <button type="submit" class="btn btn-primary btn-user btn-block" id="apply">{{\App\CPU\translate('Apply')}} {{\App\CPU\translate('Shop')}} </button>
                         </form>
                         <hr>
