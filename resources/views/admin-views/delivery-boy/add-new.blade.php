@@ -48,9 +48,9 @@
                                            placeholder="{{\App\CPU\translate('Ex')}} : ex@gmail.com" >
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="name">{{\App\CPU\translate('Commission')}}</label>
-                                    <input type="text" name="commission" value="{{old('commission')}}" class="form-control" id="commission"
-                                           placeholder="{{\App\CPU\translate('Ex')}} : percent%">
+                                    <label for="name">{{\App\CPU\translate('Delivery Charge')}}</label>
+                                    <input type="number" name="commission" value="{{old('commission')}}" class="form-control" id="commission"
+                                           placeholder="{{\App\CPU\translate('Ex')}} : 50">
                                 </div>
                             </div>
                         </div>
@@ -70,6 +70,15 @@
                                         <input name="lat" type="text" value="{{ old('lat') }}">
                                         <input name="lng" type="text" value="{{ old('lng') }}">
                                     </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="vehicle">{{\App\CPU\translate('Vehicle')}}</label>
+                                        <input type="text" name="vehicle" class="form-control" id="vehicle"
+                                            placeholder="{{\App\CPU\translate('Ex')}} : {{\App\CPU\translate('RJ01CH1234')}}" value="{{old('vehicle')}}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="name">{{\App\CPU\translate('delivery_boy_image')}}</label><span class="badge badge-soft-danger">( {{\App\CPU\translate('ratio')}} 1:1 )</span>

@@ -1,5 +1,5 @@
 @extends('layouts.back-end.app')
-@section('title', \App\CPU\translate('Employee Edit'))
+@section('title', \App\CPU\translate('Delivery Boy Edit'))
 @push('css_or_js')
     <link href="{{asset('public/assets/back-end')}}/css/select2.min.css" rel="stylesheet"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -10,7 +10,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{\App\CPU\translate('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{\App\CPU\translate('Employee')}} {{\App\CPU\translate('Update')}} </li>
+            <li class="breadcrumb-item" aria-current="page">{{\App\CPU\translate('Delivery Boy')}} {{\App\CPU\translate('Update')}} </li>
         </ol>
     </nav>
 
@@ -19,10 +19,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    {{\App\CPU\translate('Employee')}} {{\App\CPU\translate('Update')}} {{\App\CPU\translate('form')}}
+                    {{\App\CPU\translate('Delivery Boy')}} {{\App\CPU\translate('Update')}} {{\App\CPU\translate('form')}}
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.employee.update',[$e['id']])}}" method="post" enctype="multipart/form-data"
+                    <form action="{{route('admin.delivery-boy.update',[$e['id']])}}" method="post" enctype="multipart/form-data"
                           style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                         @csrf
                         <div class="form-group">
@@ -44,11 +44,15 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="name">{{\App\CPU\translate('Email')}}</label>
+                                    <label for="email">{{\App\CPU\translate('Email')}}</label>
                                     <input type="email" value="{{$e['email']}}" name="email" class="form-control" id="email"
                                            placeholder="{{\App\CPU\translate('Ex')}} : ex@gmail.com">
                                 </div>
-
+                                <div class="col-md-6">
+                                    <label for="commission">{{\App\CPU\translate('Delivery Charge')}}</label>
+                                    <input type="number" name="commission" value="{{$e['sales_commission_percentage']}}" class="form-control" id="commission"
+                                           placeholder="{{\App\CPU\translate('Ex')}} : 50">
+                                </div>
                             </div>
                         </div>
 
@@ -59,9 +63,27 @@
                                     <input type="password" name="password" class="form-control" id="password"
                                            placeholder="{{\App\CPU\translate('Password')}}">
                                 </div>
+                                <div class="col-md-6 location">
+                                    <label for="name">{{\App\CPU\translate('address')}}</label>
+                                    <input type="text" name="address" class="form-control" id="address"
+                                           placeholder="{{\App\CPU\translate('Address')}}" value="{{$e['address']}}" >
+                                    <fieldset class="details" style="display: none;">
+                                        <input name="lat" type="text" value="{{ $e['lat'] }}">
+                                        <input name="lng" type="text" value="{{ $e['lng'] }}">
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="vehicle">{{\App\CPU\translate('Vehicle')}}</label>
+                                        <input type="text" name="vehicle" class="form-control" id="vehicle"
+                                            placeholder="{{\App\CPU\translate('Ex')}} : {{\App\CPU\translate('RJ01CH1234')}}" value="{{$e['vehicle']}}" required>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">{{\App\CPU\translate('employee_image')}}</label><span class="badge badge-soft-danger">( {{\App\CPU\translate('ratio')}} 1:1 )</span>
+                                        <label for="name">{{\App\CPU\translate('delivery_boy_image')}}</label><span class="badge badge-soft-danger">( {{\App\CPU\translate('ratio')}} 1:1 )</span>
                                         <div class="custom-file text-left">
                                             <input type="file" name="image" id="customFileUpload" class="custom-file-input"
                                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
@@ -71,7 +93,7 @@
                                     <div class="text-center">
                                         <img style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px;" id="viewer"
                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                        src="{{asset('storage/app/public/admin')}}/{{$e['image']}}" alt="Employee thumbnail"/>
+                                        src="{{asset('storage/app/public/admin')}}/{{$e['image']}}" alt="Delivery Boy thumbnail"/>
                                     </div>
                                 </div>
                             </div>
@@ -93,8 +115,19 @@
 @endsection
 
 @push('script')
-    <script src="{{asset('public/assets/back-end')}}/js/select2.min.js"></script>
+    <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiWWB6yJd6ilpII5N89O-vXAo2eXiVD9g&sensor=false&libraries=places"></script>
+    <script src="{{asset('public/assets/front-end/js/jquery.geocomplete.min.js')}}"></script>
     <script>
+        $("#address").geocomplete({
+            details: ".details",
+            detailsScope: '.location',
+            types: ["geocode", "establishment"],
+        });
+            
+        $(".find").click(function(){
+            $(this).parents(".location").find("#address").trigger("geocode");
+        });
+
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -109,15 +142,6 @@
 
         $("#customFileUpload").change(function () {
             readURL(this);
-        });
-
-
-        $(".js-example-theme-single").select2({
-            theme: "classic"
-        });
-
-        $(".js-example-responsive").select2({
-            width: 'resolve'
         });
     </script>
 

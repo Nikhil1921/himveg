@@ -1386,4 +1386,9 @@
   'delivery_boys' => 'Delivery boys',
   'Employee Edit' => 'Employee Edit',
   'input if you want to change' => 'Input if you want to change',
+  'Delivery Charge' => 'Delivery Charge',
+  'Vehicle' => 'Vehicle',
+  'GJ01CH1234' => 'GJ01CH1234',
+  'RJ01CH1234' => 'RJ01CH1234',
+  'Delivery Boy Edit' => 'Delivery Boy Edit',
 );

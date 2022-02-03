@@ -32,7 +32,7 @@ class DeliveryBoyController extends Controller
         ], [
             'name.required' => 'Name is required!',
             'image.required' => 'Image is Required',
-            'commission.required' => 'Commission is Required',
+            'commission.required' => 'Delivery charge is Required',
             'phone.required' => 'Phone is Required',
             'address.required' => 'Address is Required',
             'address.required' => 'Address is Required',
@@ -48,6 +48,7 @@ class DeliveryBoyController extends Controller
             'address' => $request->address,
             'lat' => $request->lat,
             'lng' => $request->lng,
+            'vehicle' => $request->vehicle,
             'status' => 'approved',
             'password' => bcrypt($request->password),
             'image' => ImageManager::upload('admin/', 'png', $request->file('image')),
@@ -74,6 +75,7 @@ class DeliveryBoyController extends Controller
 
     public function update(Request $request, $id)
     {
+        dd();
         $request->validate([
             'name' => 'required',
             'commission' => 'required',
@@ -83,7 +85,7 @@ class DeliveryBoyController extends Controller
             'lng' => 'required',
         ], [
             'name.required' => 'Name is required!',
-            'commission.required' => 'Commission is Required',
+            'commission.required' => 'Delivery charge is Required',
             'phone.required' => 'Phone is Required',
             'address.required' => 'Address is Required',
             'lat.required' => 'Lattitude is Required',
@@ -91,6 +93,7 @@ class DeliveryBoyController extends Controller
         ]);
 
         $e = DeliveryBoy::find($id);
+
         if ($request['password'] == null) {
             $pass = $e['password'];
         } else {
@@ -110,6 +113,7 @@ class DeliveryBoyController extends Controller
             'lat' => $request->lat,
             'lng' => $request->lng,
             'password' => $pass,
+            'vehicle' => $request->vehicle,
             'image' => $e['image'],
             'updated_at' => now(),
         ]);
