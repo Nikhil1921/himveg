@@ -1391,4 +1391,10 @@
   'GJ01CH1234' => 'GJ01CH1234',
   'RJ01CH1234' => 'RJ01CH1234',
   'Delivery Boy Edit' => 'Delivery Boy Edit',
+  'Vehicle No.' => 'Vehicle No.',
+  'Vehicle Name' => 'Vehicle Name',
+  'RC No.' => 'RC No.',
+  'Insurance no. ' => 'Insurance no. ',
+  'Insurance no.' => 'Insurance no.',
+  'Account No.' => 'Account No.',
 );

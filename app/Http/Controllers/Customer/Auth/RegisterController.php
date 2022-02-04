@@ -58,13 +58,13 @@ class RegisterController extends Controller
         ]);
 
         $phone_verification = Helpers::get_business_settings('phone_verification');
-        $email_verification = Helpers::get_business_settings('email_verification');
+        /* $email_verification = Helpers::get_business_settings('email_verification'); */
         if ($phone_verification && !$user->is_phone_verified) {
             return redirect(route('customer.auth.check', [$user->id]));
         }
-        if ($email_verification && !$user->is_email_verified) {
+        /* if ($email_verification && !$user->is_email_verified) {
             return redirect(route('customer.auth.check', [$user->id]));
-        }
+        } */
 
         Toastr::success(translate('registration_success_login_now'));
         return redirect(route('customer.auth.login'));
@@ -83,13 +83,13 @@ class RegisterController extends Controller
         ]);
 
         $phone_verification = Helpers::get_business_settings('phone_verification');
-        $email_verification = Helpers::get_business_settings('email_verification');
+        /* $email_verification = Helpers::get_business_settings('email_verification'); */
         if ($phone_verification && !$user->is_phone_verified) {
             SMS_module::send($user->phone, $token);
             $response = translate('please_check_your_SMS_for_OTP');
             Toastr::success($response);
         }
-        if ($email_verification && !$user->is_email_verified) {
+        /* if ($email_verification && !$user->is_email_verified) {
             try {
                 Mail::to($user->email)->send(new \App\Mail\EmailVerification($token));
                 $response = translate('check_your_email');
@@ -98,7 +98,7 @@ class RegisterController extends Controller
                 $response = translate('email_failed');
                 Toastr::error($response);
             }
-        }
+        } */
 
         return view('customer-view.auth.verify', compact('user'));
     }

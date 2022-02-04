@@ -56,13 +56,13 @@ class LoginController extends Controller
         }
 
         $phone_verification = Helpers::get_business_settings('phone_verification');
-        $email_verification = Helpers::get_business_settings('email_verification');
+        // $email_verification = Helpers::get_business_settings('email_verification');
         if ($phone_verification && !$user->is_phone_verified) {
             return redirect(route('customer.auth.check', [$user->id]));
         }
-        if ($email_verification && !$user->is_email_verified) {
+        /* if ($email_verification && !$user->is_email_verified) {
             return redirect(route('customer.auth.check', [$user->id]));
-        }
+        } */
 
         if (isset($user) && $user->is_active && auth('customer')->attempt(['email' => $user->email, 'password' => $request->password], $remember)) {
             session()->put('wish_list', Wishlist::where('customer_id', auth('customer')->user()->id)->pluck('product_id')->toArray());

@@ -76,10 +76,61 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="vehicle">{{\App\CPU\translate('Vehicle')}}</label>
+                                    <label for="vehicle">{{\App\CPU\translate('Vehicle No.')}}</label>
                                         <input type="text" name="vehicle" class="form-control" id="vehicle"
-                                            placeholder="{{\App\CPU\translate('Ex')}} : {{\App\CPU\translate('RJ01CH1234')}}" value="{{old('vehicle')}}" required>
+                                            placeholder="{{\App\CPU\translate('Vehicle No.')}}" value="{{old('vehicle')}}" required>
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="vehicle_name">{{\App\CPU\translate('Vehicle Name')}}</label>
+                                        <input type="text" name="vehicle_name" class="form-control" id="vehicle_name"
+                                            placeholder="{{\App\CPU\translate('Vehicle No.')}}" value="{{old('vehicle_name')}}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="rc_no">{{\App\CPU\translate('RC No.')}}</label>
+                                        <input type="text" name="rc_no" class="form-control" id="rc_no"
+                                            placeholder="{{\App\CPU\translate('RC No.')}}" value="{{old('rc_no')}}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="insurance_no">{{\App\CPU\translate('Insurance no. ')}}</label>
+                                        <input type="text" name="insurance_no" class="form-control" id="insurance_no"
+                                            placeholder="{{\App\CPU\translate('Insurance no.')}}" value="{{old('insurance_no')}}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="bank_name">{{\App\CPU\translate('Bank Name')}}</label>
+                                <input type="text" name="bank_name" value="{{ old('bank_name') }}"
+                                        class="form-control" id="bank_name" placeholder="{{\App\CPU\translate('Bank Name')}}"
+                                        required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="branch">{{\App\CPU\translate('Branch Name')}}</label>
+                                <input type="text" name="branch" value="{{ old('branch') }}" class="form-control"
+                                        id="branch" placeholder="{{\App\CPU\translate('Branch Name')}}"
+                                        required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="holder_name">{{\App\CPU\translate('Holder Name')}}</label>
+                                <input type="text" name="holder_name" value="{{ old('holder_name') }}"
+                                        class="form-control" id="holder_name" placeholder="{{\App\CPU\translate('Holder Name')}}"
+                                        required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="account_no">{{\App\CPU\translate('Account No.')}}</label>
+                                <input type="number" name="account_no" value="{{ old('account_no') }}"
+                                            class="form-control" id="account_no" placeholder="{{\App\CPU\translate('Account No')}}"
+                                            required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
                                 <div class="col-md-6">
                                     <label for="name">{{\App\CPU\translate('delivery_boy_image')}}</label><span class="badge badge-soft-danger">( {{\App\CPU\translate('ratio')}} 1:1 )</span>
                                     <br>

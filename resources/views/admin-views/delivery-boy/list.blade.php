@@ -35,7 +35,7 @@
                                 <th>{{\App\CPU\translate('SL')}}#</th>
                                 <th>{{\App\CPU\translate('Name')}}</th>
                                 <th>{{\App\CPU\translate('Phone')}}</th>
-                                {{-- <th style="width: 50px">{{\App\CPU\translate('action')}}</th> --}}
+                                <th style="width: 50px">{{\App\CPU\translate('action')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -44,12 +44,12 @@
                                 <th scope="row">{{$k+1}}</th>
                                 <td class="text-capitalize">{{$e['name']}}</td>
                                 <td>{{$e['phone']}}</td>
-                                {{-- <td>
+                                <td>
                                     <a href="{{route('admin.delivery-boy.update',[$e['id']])}}"
                                         class="btn btn-primary btn-sm">
                                         {{\App\CPU\translate('Edit')}}
                                     </a>
-                                </td> --}}
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>

@@ -49,8 +49,15 @@ class DeliveryBoyController extends Controller
             'lat' => $request->lat,
             'lng' => $request->lng,
             'vehicle' => $request->vehicle,
+            'vehicle_name' => $request->vehicle_name,
+            'rc_no' => $request->rc_no,
+            'insurance_no' => $request->insurance_no,
+            'bank_name' => $request->bank_name,
+            'branch' => $request->branch,
+            'holder_name' => $request->holder_name,
+            'account_no' => $request->account_no,
             'status' => 'approved',
-            'password' => bcrypt($request->password),
+            'password' => md5($request->password),
             'image' => ImageManager::upload('admin/', 'png', $request->file('image')),
             'created_at' => now(),
             'updated_at' => now(),
@@ -75,7 +82,6 @@ class DeliveryBoyController extends Controller
 
     public function update(Request $request, $id)
     {
-        dd();
         $request->validate([
             'name' => 'required',
             'commission' => 'required',
@@ -97,14 +103,14 @@ class DeliveryBoyController extends Controller
         if ($request['password'] == null) {
             $pass = $e['password'];
         } else {
-            $pass = bcrypt($request['password']);
+            $pass = md5($request['password']);
         }
 
         if ($request->has('image')) {
             $e['image'] = ImageManager::update('admin/', $e['image'], 'png', $request->file('image'));
         }
 
-        DB::table('admins')->where(['id' => $id])->update([
+        DB::table('delivery_boys')->where(['id' => $id])->update([
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
@@ -114,6 +120,13 @@ class DeliveryBoyController extends Controller
             'lng' => $request->lng,
             'password' => $pass,
             'vehicle' => $request->vehicle,
+            'vehicle_name' => $request->vehicle_name,
+            'rc_no' => $request->rc_no,
+            'insurance_no' => $request->insurance_no,
+            'bank_name' => $request->bank_name,
+            'branch' => $request->branch,
+            'holder_name' => $request->holder_name,
+            'account_no' => $request->account_no,
             'image' => $e['image'],
             'updated_at' => now(),
         ]);
