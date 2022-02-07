@@ -29,17 +29,38 @@ class DbHandler
         
     /*-----------------------------End Api key Check------------------------------------*/
 
+    /*---------------------------------verify-----------------------------------*/
+
+    public function signup($p)
+    {
+        $sql = "INSERT INTO `delivery_boys`(`name`, `phone`, `image`, `email`, `status`, `created_at`, `updated_at`, `bank_name`, `branch`, `account_no`, `holder_name`, `sales_commission_percentage`, `address`, `lat`, `lng`, `vehicle`, `vehicle_name`, `rc_no`, `insurance_no`) VALUES ('$p->name', '$p->phone', '$p->image', '$p->email', 'approved', '$p->created_at', '$p->updated_at', '$p->bank_name', '$p->ifsc', '$p->account_no', '$p->holder_name', '$p->commission', '$p->address', '$p->lat', '$p->lng', '$p->vehicle', '$p->vehicle_name', '$p->rc_no', '$p->insurance_no')";
+
+        return mysqli_query($this->conn, $sql);
+    }
+
+    public function verify($value, $field, $table)
+    {
+        $sql = "SELECT $field FROM $table WHERE $field = '$value'";
+        $data = mysqli_query($this->conn, $sql);
+        
+        return mysqli_num_rows($data) > 0 ? true : false;
+    }
+        
+    /*-----------------------------End verify------------------------------------*/
+
     /*---------------------------------Mobile Check-----------------------------------*/
 
     public function login($p)
     {
-        $pass = md5($p->password);
-        $sql = "SELECT * from delivery_boys where phone = '$p->mobile' AND password = '$pass'";
+        $sql = "SELECT * from delivery_boys where phone = '$p->mobile'";
         $result = mysqli_query($this->conn,$sql);
 
         if(mysqli_num_rows($result) > 0)
         {
-            return $result->fetch_assoc();
+            $data = $result->fetch_assoc();
+            $data['otp'] = rand(1000, 9999);
+            $this->send_otp($p->mobile, $data['otp']);
+            return $data;
         }
         else
         {

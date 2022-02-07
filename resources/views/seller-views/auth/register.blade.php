@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <input type="text" name="branch" value="{{ old('branch') }}" class="form-control"
-                                            id="branch" placeholder="{{\App\CPU\translate('Branch Name')}}"
+                                            id="branch" placeholder="{{\App\CPU\translate('IFSC Code')}}"
                                             required>
                                 </div>
                             </div>
@@ -111,6 +111,7 @@
                                         required>
                                         <option value="Fruits">Fruits</option>
                                         <option value="Vegitables">Vegitables</option>
+                                        <option value="Both">Both</option>
                                     </select>
                                 </div>
                             </div>

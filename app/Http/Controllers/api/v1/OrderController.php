@@ -51,4 +51,20 @@ class OrderController extends Controller
 
         return response()->json(translate('order_placed_successfully'), 200);
     }
+
+    public function status_change(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'order_id' => 'required',
+            'status' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+        }
+
+        return response()->json(OrderManager::status_change($request), 200);
+
+        return response()->json(translate('order_placed_successfully'), 200);
+    }
 }

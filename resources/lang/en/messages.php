@@ -1397,4 +1397,6 @@
   'Insurance no. ' => 'Insurance no. ',
   'Insurance no.' => 'Insurance no.',
   'Account No.' => 'Account No.',
+  'order_not_found' => 'Order not found',
+  'IFSC Code' => 'IFSC Code',
 );

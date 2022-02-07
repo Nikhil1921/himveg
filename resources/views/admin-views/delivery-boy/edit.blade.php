@@ -110,9 +110,9 @@
                                         required>
                             </div>
                             <div class="col-md-6">
-                                <label for="branch">{{\App\CPU\translate('Branch Name')}}</label>
+                                <label for="branch">{{\App\CPU\translate('IFSC Code')}}</label>
                                 <input type="text" name="branch" value="{{ $e['branch'] }}" class="form-control"
-                                        id="branch" placeholder="{{\App\CPU\translate('Branch Name')}}"
+                                        id="branch" placeholder="{{\App\CPU\translate('IFSC Code')}}"
                                         required>
                             </div>
                         </div>

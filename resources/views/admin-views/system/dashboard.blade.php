@@ -123,7 +123,7 @@
                                     </h5>
                                     <!-- End Legend Indicators -->
                                 </div>
-                                <div class="col-md-4 col-12 graph-border-1">
+                                {{-- <div class="col-md-4 col-12 graph-border-1">
                                     <div class="mt-2 center-div">
                                     <span class="h6 mb-0">
                                         <i class="legend-indicator bg-primary"
@@ -131,8 +131,8 @@
                                         {{\App\CPU\translate('in-house_earning')}} : {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency(array_sum($inhouse_data)))}}
                                     </span>
                                     </div>
-                                </div>
-                                <div class="col-md-4 col-12 graph-border-1">
+                                </div> --}}
+                                <div class="col-md-6 col-12 graph-border-1">
                                     <div class="mt-2 center-div">
                                       <span class="h6 mb-0">
                                           <i class="legend-indicator bg-success"
@@ -141,7 +141,7 @@
                                     </span>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-12 graph-border-1">
+                                <div class="col-md-6 col-12 graph-border-1">
                                     <div class="mt-2 center-div">
                                       <span class="h6 mb-0">
                                           <i class="legend-indicator bg-danger"

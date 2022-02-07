@@ -6,7 +6,7 @@ require '.././libs/Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
-
+define('UPLOAD', dirname(dirname(__DIR__)).'/storage/app/public/admin/');
 /*--------------------------Required field Check----------------------------------*/
 
 function verifyRequiredParams($required_fields)
@@ -80,32 +80,89 @@ function authenticate(\Slim\Route $route)
 
 /*----------------------------End Api key Check----------------------------------*/
 
-/*---------------------------------Mobile Check------------------------------------*/
+/*---------------------------------Login Check------------------------------------*/
 
 $app->post('/login',function () use ($app)
 {
-    verifyRequiredParams(array('mobile', 'password'));
+    verifyRequiredParams(array('mobile'));
 
     $post = (object) $app->request->post();
   
     $db = new DbHandler();
 
     if($row = $db->login($post))
-    {        
+    {
         $response['row'] = $row;
         $response['error'] = false;
-        $response['message'] ="Login Successfully.";
+        $response['message'] ="OTP sent successful.";
     }
-    else 
+    else
     {
         $response["error"] = true;
-        $response['message'] = "Login Not Successfully!";
+        $response['message'] = "OTP sent not successful!";
     }
 
     echoRespnse(200, $response);
 });
 
-/*-----------------------------End Mobile Check------------------------------------*/
+/*-----------------------------End Login Check------------------------------------*/
+
+/*---------------------------------Sign UP------------------------------------*/
+
+$app->post('/signup',function () use ($app)
+{
+    $validate = ['name', 'phone', 'email', 'commission', 'address', 'lat', 'lng', 'vehicle', 'vehicle_name', 'rc_no', 'insurance_no', 'bank_name', 'ifsc', 'holder_name', 'account_no'];
+    
+    if (empty($_FILES['image']['name'])) {
+        array_push($validate, 'image');
+    }
+
+    verifyRequiredParams($validate);
+    $post = (object) $app->request->post();
+    $db = new DbHandler();
+    
+    if($db->verify($post->phone, 'phone', 'delivery_boys'))
+    {
+        $response['error'] = false;
+        $response['message'] ="Mobile already in use.";
+        echoRespnse(200, $response);
+    }
+
+    if($db->verify($post->email, 'email', 'delivery_boys'))
+    {
+        $response['error'] = false;
+        $response['message'] ="Email already in use.";
+        echoRespnse(200, $response);
+    }
+    
+    $image = date('Y-m-d-').time().".".pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+    
+    if(! move_uploaded_file($_FILES['image']['tmp_name'], UPLOAD.$image)){
+        $response["error"] = true;
+        $response['message'] = "Error in image upload.";
+    }
+    
+    $post->image = $image;
+    $post->created_at = date('Y-m-d H:i:s');
+    $post->updated_at = date('Y-m-d H:i:s');
+
+    if($row = $db->signup($post))
+    {
+        // $response['row'] = $row;
+        $response['error'] = false;
+        $response['message'] ="Sign up successful.";
+    }
+    else
+    {
+        if (is_file(UPLOAD.$image)) unlink(UPLOAD.$image);
+        $response["error"] = true;
+        $response['message'] = "Sign up not successful!";
+    }
+
+    echoRespnse(200, $response);
+});
+
+/*-----------------------------End Sign UP------------------------------------*/
 
 /*---------------------------------Forgot Password------------------------------------*/
 

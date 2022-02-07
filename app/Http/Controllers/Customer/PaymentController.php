@@ -36,10 +36,10 @@ class PaymentController extends Controller
             session()->put('coupon_discount', $discount);
         }
 
-        $cart_group_ids = CartManager::get_cart_group_ids();
+        /* $cart_group_ids = CartManager::get_cart_group_ids();
         if (CartShipping::whereIn('cart_group_id', $cart_group_ids)->count() != count($cart_group_ids)) {
             return response()->json(['errors' => ['code' => 'shipping-method', 'message' => 'Data not found']], 403);
-        }
+        } */
 
         $customer = User::find($request['customer_id']);
 

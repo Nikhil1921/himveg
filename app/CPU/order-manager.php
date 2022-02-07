@@ -398,4 +398,15 @@ class OrderManager
 
         return $order_id;
     }
+
+    public static function status_change($data)
+    {
+        if($order = Order::find($data['order_id'])){
+            $order->order_status = $data['status'];
+            $order->save();
+            return translate('order_placed_successfully');
+        }else{
+            return translate('order_not_found');
+        }
+    }
 }
