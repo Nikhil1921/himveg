@@ -1399,4 +1399,8 @@
   'Account No.' => 'Account No.',
   'order_not_found' => 'Order not found',
   'IFSC Code' => 'IFSC Code',
+  'Licence No.' => 'Licence No.',
+  'Aadhar No.' => 'Aadhar No.',
+  'Home address' => 'Home address',
+  'Delivery area address' => 'Delivery area address',
 );

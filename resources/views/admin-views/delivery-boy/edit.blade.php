@@ -58,15 +58,15 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <label for="name">{{\App\CPU\translate('Password')}}</label><small> ( {{\App\CPU\translate('input if you want to change')}} )</small>
                                     <input type="password" name="password" class="form-control" id="password"
                                            placeholder="{{\App\CPU\translate('Password')}}">
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6 location">
-                                    <label for="name">{{\App\CPU\translate('address')}}</label>
+                                    <label for="name">{{\App\CPU\translate('Delivery area address')}}</label>
                                     <input type="text" name="address" class="form-control" id="address"
-                                           placeholder="{{\App\CPU\translate('Address')}}" value="{{$e['address']}}" >
+                                           placeholder="{{\App\CPU\translate('Delivery area address')}}" value="{{$e['address']}}" >
                                     <fieldset class="details" style="display: none;">
                                         <input name="lat" type="text" value="{{ $e['lat'] }}">
                                         <input name="lng" type="text" value="{{ $e['lng'] }}">
@@ -82,23 +82,23 @@
                                             placeholder="{{\App\CPU\translate('Vehicle No.')}}" value="{{$e['vehicle']}}" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="vehicle_name">{{\App\CPU\translate('Vehicle Name')}}</label>
+                                    <label for="vehicle_name">{{\App\CPU\translate('Licence No.')}}</label>
                                         <input type="text" name="vehicle_name" class="form-control" id="vehicle_name"
-                                            placeholder="{{\App\CPU\translate('Vehicle No.')}}" value="{{$e['vehicle_name']}}" required>
+                                            placeholder="{{\App\CPU\translate('Licence No.')}}" value="{{$e['vehicle_name']}}" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="rc_no">{{\App\CPU\translate('RC No.')}}</label>
+                                    <label for="rc_no">{{\App\CPU\translate('Home address')}}</label>
                                         <input type="text" name="rc_no" class="form-control" id="rc_no"
-                                            placeholder="{{\App\CPU\translate('RC No.')}}" value="{{$e['rc_no']}}" required>
+                                            placeholder="{{\App\CPU\translate('Home address')}}" value="{{$e['rc_no']}}" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="insurance_no">{{\App\CPU\translate('Insurance no. ')}}</label>
+                                    <label for="insurance_no">{{\App\CPU\translate('Aadhar No.')}}</label>
                                         <input type="text" name="insurance_no" class="form-control" id="insurance_no"
-                                            placeholder="{{\App\CPU\translate('Insurance no.')}}" value="{{$e['insurance_no']}}" required>
+                                            placeholder="{{\App\CPU\translate('Aadhar No.')}}" value="{{$e['insurance_no']}}" required>
                                 </div>
                             </div>
                         </div>
@@ -175,9 +175,9 @@
             types: ["geocode", "establishment"],
         });
             
-        $(".find").click(function(){
+        /* $(".find").click(function(){
             $(this).parents(".location").find("#address").trigger("geocode");
-        });
+        }); */
 
         function readURL(input) {
             if (input.files && input.files[0]) {
