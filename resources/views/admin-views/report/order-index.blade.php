@@ -268,7 +268,7 @@
 
             <div class="col-sm-6 col-lg-3 mb-3 mb-lg-6">
             @php
-                $canceled=\App\Model\Order::where(['order_status'=>'processing'])->whereBetween('created_at', [$from, $to])->count()
+                $canceled=\App\Model\Order::where(['order_status'=>'packed'])->whereBetween('created_at', [$from, $to])->count()
             @endphp
             <!-- Card -->
                 <div class="card card-sm">
@@ -280,7 +280,7 @@
                                     <i class="tio-flight-cancelled nav-icon"></i>
 
                                     <div class="media-body">
-                                        <h4 class="mb-1">{{\App\CPU\translate('Processing')}}</h4>
+                                        <h4 class="mb-1">{{\App\CPU\translate('Packed')}}</h4>
                                         <span class="font-size-sm text-muted">
                                           <i class="tio-trending-up"></i> {{$canceled}}
                                         </span>

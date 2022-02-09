@@ -37,7 +37,7 @@ class RazorPayController extends Controller
                 foreach (CartManager::get_cart_group_ids() as $group_id) {
                     $data = [
                         'payment_method' => 'razor_pay',
-                        'order_status' => 'confirmed',
+                        'order_status' => 'packaging',
                         'payment_status' => 'paid',
                         'transaction_ref' => $request['razorpay_payment_id'],
                         'order_group_id' => $unique_id,

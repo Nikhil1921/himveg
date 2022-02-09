@@ -86,7 +86,7 @@
                                     <div class="custom-file" style="text-align: left">
                                         <input type="file" name="image" id="customFileUpload" class="custom-file-input"
                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                        <label class="custom-file-label" for="customFileUpload">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('image')}}</label>
+                                        <label class="custom-file-label" for="customFileUpload">{{\App\CPU\translate('Passport Size photo')}}</label>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                                     <div class="custom-file" style="text-align: left">
                                         <input type="file" name="logo" id="LogoUpload" class="custom-file-input"
                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                        <label class="custom-file-label" for="LogoUpload">{{\App\CPU\translate('Upload')}} {{\App\CPU\translate('logo')}}</label>
+                                        <label class="custom-file-label" for="LogoUpload">{{\App\CPU\translate('shop')}} {{\App\CPU\translate('image')}}</label>
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="small"  href="{{route('seller.auth.login')}}">{{\App\CPU\translate('already_have_an_account?_login.')}}</a>
+                            <a class="" href="{{route('seller.auth.login')}}">{{\App\CPU\translate('already_have_an_account?_login.')}}</a>
                         </div>
                     </div>
                 </div>

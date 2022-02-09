@@ -104,22 +104,22 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li class="nav-item {{Request::is('seller/orders/list/confirmed')?'active':''}}">
-                                    <a class="nav-link " href="{{route('seller.orders.list',['confirmed'])}}" title="">
+                                <li class="nav-item {{Request::is('seller/orders/list/packaging')?'active':''}}">
+                                    <a class="nav-link " href="{{route('seller.orders.list',['packaging'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{\App\CPU\translate('confirmed')}}</span>
+                                        <span class="text-truncate">{{\App\CPU\translate('packaging')}}</span>
                                         <span class="badge badge-soft-info badge-pill {{Session::get('direction') === "rtl" ? 'mr-1' : 'ml-1'}}">
-                                            {{ \App\Model\Order::where(['seller_is'=>'seller'])->where(['seller_id'=>$sellerId])->where(['order_status'=>'confirmed'])->count()}}
+                                            {{ \App\Model\Order::where(['seller_is'=>'seller'])->where(['seller_id'=>$sellerId])->where(['order_status'=>'packaging'])->count()}}
                                         </span>
                                     </a>
                                 </li>
 
-                                <li class="nav-item {{Request::is('seller/orders/list/processing')?'active':''}}">
-                                    <a class="nav-link " href="{{route('seller.orders.list',['processing'])}}" title="">
+                                <li class="nav-item {{Request::is('seller/orders/list/packed')?'active':''}}">
+                                    <a class="nav-link " href="{{route('seller.orders.list',['packed'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{\App\CPU\translate('Processing')}}</span>
+                                        <span class="text-truncate">{{\App\CPU\translate('Packed')}}</span>
                                         <span class="badge badge-warning badge-pill {{Session::get('direction') === "rtl" ? 'mr-1' : 'ml-1'}}">
-                                            {{ \App\Model\Order::where(['seller_is'=>'seller'])->where(['seller_id'=>$sellerId])->where(['order_status'=>'processing'])->count()}}
+                                            {{ \App\Model\Order::where(['seller_is'=>'seller'])->where(['seller_id'=>$sellerId])->where(['order_status'=>'packed'])->count()}}
                                         </span>
                                     </a>
                                 </li>

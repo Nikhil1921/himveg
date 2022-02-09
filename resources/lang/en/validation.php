@@ -20,7 +20,7 @@ return [
         'string' => 'The :attribute must be between :min and :max characters.',
     ],
     'boolean' => 'The :attribute field must be true or false.',
-    'confirmed' => 'The :attribute confirmation does not match.',
+    'packaging' => 'The :attribute confirmation does not match.',
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',

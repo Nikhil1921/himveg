@@ -91,14 +91,14 @@
                             <div class="nav-link ">
                                 <div class="align-items-center">
                                     <div class="media-tab-media"
-                                         style="margin: 0 auto; @if(($orderDetails['order_status']=='processing') || ($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='delivered')) background: #4bcc02; color: white; @endif ">
-                                        @if(($orderDetails['order_status']=='processing') || ($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='delivered'))
+                                         style="margin: 0 auto; @if(($orderDetails['order_status']=='packed') || ($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='delivered')) background: #4bcc02; color: white; @endif ">
+                                        @if(($orderDetails['order_status']=='packed') || ($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='delivered'))
                                             <i class="czi-check"></i>
                                         @endif
                                     </div>
                                     <div class="media-body" style="text-align: center;">
                                         <div class="media-tab-subtitle text-muted font-size-xs mb-1">{{\App\CPU\translate('second_step')}}</div>
-                                        <h6 class="media-tab-title text-nowrap mb-0">{{\App\CPU\translate('processing_order')}}</h6>
+                                        <h6 class="media-tab-title text-nowrap mb-0">{{\App\CPU\translate('packed_order')}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                                 <div class="align-items-center">
                                     <div class="media-tab-media"
                                          style="margin: 0 auto; @if(($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='delivered')) background: #4bcc02; color: white; @endif ">
-                                        @if(($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='processing') || ($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='delivered'))
+                                        @if(($orderDetails['order_status']=='out_for_delivery') || ($orderDetails['order_status']=='packed') || ($orderDetails['order_status']=='processed') || ($orderDetails['order_status']=='delivered'))
                                             <i class="czi-check"></i>
                                         @endif
                                     </div>

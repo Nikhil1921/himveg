@@ -154,7 +154,7 @@ class BkashPaymentController extends Controller
         foreach (CartManager::get_cart_group_ids() as $group_id) {
             $data = [
                 'payment_method' => 'bkash',
-                'order_status' => 'confirmed',
+                'order_status' => 'packaging',
                 'payment_status' => 'paid',
                 'transaction_ref' => $request['trxID'],
                 'order_group_id' => $unique_id,

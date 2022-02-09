@@ -84,10 +84,10 @@
                                                 @if($order->order_status=='pending')
                                                     <label
                                                         class="badge badge-primary">{{\App\CPU\translate($order['order_status'])}}</label>
-                                                @elseif($order->order_status=='processing' || $order->order_status=='out_for_delivery')
+                                                @elseif($order->order_status=='packed' || $order->order_status=='out_for_delivery')
                                                     <label
                                                         class="badge badge-warning">{{\App\CPU\translate($order['order_status'])}}</label>
-                                                @elseif($order->order_status=='delivered' || $order->order_status=='confirmed')
+                                                @elseif($order->order_status=='delivered' || $order->order_status=='packaging')
                                                     <label
                                                         class="badge badge-success">{{\App\CPU\translate($order['order_status'])}}</label>
                                                 @elseif($order->order_status=='returned')

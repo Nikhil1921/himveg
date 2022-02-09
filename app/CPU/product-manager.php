@@ -30,9 +30,9 @@ class ProductManager
         ];
     }
 
-    public static function get_featured_products($limit = 10, $offset = 1)
+    public static function get_featured_products($limit = 10, $offset = 1, $lat, $lng)
     {
-        $paginator = Product::with(['reviews'])->active()
+        $paginator = Product::with(['reviews'])->active(['lat' => $lat, 'lng' => $lng])
             ->where('featured', 1)
             ->withCount(['order_details'])->orderBy('order_details_count', 'DESC')
             ->paginate($limit, ['*'], 'page', $offset);

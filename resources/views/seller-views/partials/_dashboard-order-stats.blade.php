@@ -21,13 +21,13 @@
 
 <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
     <!-- Card -->
-    <a class="card card-hover-shadow h-100" href="{{route('seller.orders.list',['confirmed'])}}" style="background: #001E6C">
+    <a class="card card-hover-shadow h-100" href="{{route('seller.orders.list',['packaging'])}}" style="background: #001E6C">
         <div class="card-body">
             <div class="flex-between align-items-center mb-1">
                 <div style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                    <h6 class="card-subtitle" style="color: white!important;">{{\App\CPU\translate('confirmed')}}</h6>
+                    <h6 class="card-subtitle" style="color: white!important;">{{\App\CPU\translate('packaging')}}</h6>
                     <span class="card-title h2" style="color: white!important;">
-                         {{$data['confirmed']}}
+                         {{$data['packaging']}}
                      </span>
                 </div>
 
@@ -43,13 +43,13 @@
 
 <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
     <!-- Card -->
-    <a class="card card-hover-shadow h-100" href="{{route('seller.orders.list',['processing'])}}" style="background: #053742">
+    <a class="card card-hover-shadow h-100" href="{{route('seller.orders.list',['packed'])}}" style="background: #053742">
         <div class="card-body">
             <div class="flex-between align-items-center gx-2 mb-1">
                 <div style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                    <h6 class="card-subtitle" style="color: white!important;">{{\App\CPU\translate('Processing')}}</h6>
+                    <h6 class="card-subtitle" style="color: white!important;">{{\App\CPU\translate('Packed')}}</h6>
                     <span class="card-title h2" style="color: white!important;">
-                        {{$data['processing']}}
+                        {{$data['packed']}}
                     </span>
                 </div>
 

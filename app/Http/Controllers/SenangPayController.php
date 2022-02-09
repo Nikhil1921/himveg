@@ -21,7 +21,7 @@ class SenangPayController extends Controller
             foreach (CartManager::get_cart_group_ids() as $group_id) {
                 $data = [
                     'payment_method' => 'senang_pay',
-                    'order_status' => 'confirmed',
+                    'order_status' => 'packaging',
                     'payment_status' => 'paid',
                     'transaction_ref' => $unique_id,
                     'order_group_id' => $unique_id,

@@ -142,12 +142,12 @@
                                               style="{{Session::get('direction') === "rtl" ? 'margin-right: 0;margin-left: .4375rem;' : 'margin-left: 0;margin-right: .4375rem;'}}"></span>{{\App\CPU\translate($order['order_status'])}}
                                       </span>
 
-                                @elseif($order['order_status']=='processing' || $order['order_status']=='out_for_delivery')
+                                @elseif($order['order_status']=='packed' || $order['order_status']=='out_for_delivery')
                                     <span class="badge badge-soft-warning ml-2 ml-sm-3">
                                         <span class="legend-indicator bg-warning"
                                               style="{{Session::get('direction') === "rtl" ? 'margin-right: 0;margin-left: .4375rem;' : 'margin-left: 0;margin-right: .4375rem;'}}"></span>{{\App\CPU\translate($order['order_status'])}}
                                       </span>
-                                @elseif($order['order_status']=='confirmed')
+                                @elseif($order['order_status']=='packaging')
                                     <span class="badge badge-soft-success ml-2 ml-sm-3">
                                         <span class="legend-indicator bg-success"
                                               style="{{Session::get('direction') === "rtl" ? 'margin-right: 0;margin-left: .4375rem;' : 'margin-left: 0;margin-right: .4375rem;'}}"></span>{{\App\CPU\translate($order['order_status'])}}

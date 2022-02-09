@@ -401,10 +401,10 @@ class Helpers
     {
         if ($status == 'pending') {
             $data = BusinessSetting::where('type', 'order_pending_message')->first()->value;
-        } elseif ($status == 'confirmed') {
+        } elseif ($status == 'packaging') {
             $data = BusinessSetting::where('type', 'order_confirmation_msg')->first()->value;
-        } elseif ($status == 'processing') {
-            $data = BusinessSetting::where('type', 'order_processing_message')->first()->value;
+        } elseif ($status == 'packed') {
+            $data = BusinessSetting::where('type', 'order_packed_message')->first()->value;
         } elseif ($status == 'out_for_delivery') {
             $data = BusinessSetting::where('type', 'out_for_delivery_message')->first()->value;
         } elseif ($status == 'delivered') {

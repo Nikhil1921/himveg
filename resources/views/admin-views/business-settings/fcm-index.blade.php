@@ -109,24 +109,24 @@
                                     </div>
                                 </div>
 
-                                @php($oprm=\App\Model\BusinessSetting::where('type','order_processing_message')->first()->value)
+                                @php($oprm=\App\Model\BusinessSetting::where('type','order_packed_message')->first()->value)
                                 @php($data=json_decode($oprm,true))
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label class="toggle-switch d-flex align-items-center mb-3"
-                                               for="processing_status">
-                                            <input type="checkbox" name="processing_status"
+                                               for="packed_status">
+                                            <input type="checkbox" name="packed_status"
                                                    class="toggle-switch-input"
-                                                   value="1" id="processing_status" {{$data['status']==1?'checked':''}}>
+                                                   value="1" id="packed_status" {{$data['status']==1?'checked':''}}>
                                             <span class="toggle-switch-label">
                                                 <span class="toggle-switch-indicator"></span>
                                               </span>
                                             <span class="toggle-switch-content">
-                                                <span class="d-block {{Session::get('direction') === "rtl" ? 'mr-2' : ''}}">{{\App\CPU\translate('Order Processing Message')}}</span>
+                                                <span class="d-block {{Session::get('direction') === "rtl" ? 'mr-2' : ''}}">{{\App\CPU\translate('Order Packed Message')}}</span>
                                               </span>
                                         </label>
 
-                                        <textarea name="processing_message"
+                                        <textarea name="packed_message"
                                                   class="form-control">{{$data['message']}}</textarea>
                                     </div>
                                 </div>

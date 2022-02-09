@@ -158,7 +158,7 @@ class DashboardController extends Controller
                 return $query->whereMonth('created_at', Carbon::now());
             })
             ->count();
-        $confirmed = Order::where(['order_status' => 'confirmed'])
+        $packaging = Order::where(['order_status' => 'packaging'])
             ->when($today, function ($query) {
                 return $query->whereDate('created_at', Carbon::today());
             })
@@ -166,7 +166,7 @@ class DashboardController extends Controller
                 return $query->whereMonth('created_at', Carbon::now());
             })
             ->count();
-        $processing = Order::where(['order_status' => 'processing'])
+        $packed = Order::where(['order_status' => 'packed'])
             ->when($today, function ($query) {
                 return $query->whereDate('created_at', Carbon::today());
             })
@@ -217,8 +217,8 @@ class DashboardController extends Controller
 
         $data = [
             'pending' => $pending,
-            'confirmed' => $confirmed,
-            'processing' => $processing,
+            'packaging' => $packaging,
+            'packed' => $packed,
             'out_for_delivery' => $out_for_delivery,
             'delivered' => $delivered,
             'canceled' => $canceled,

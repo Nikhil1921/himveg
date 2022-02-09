@@ -67,11 +67,11 @@
                                     <td class="text-capitalize ">
                                         @if($order->order_status=='pending')
                                             <label class="badge badge-primary">{{str_replace('_',' ',$order->order_status)}}</label>
-                                        @elseif($order->order_status=='processing' || $order->order_status=='out_for_delivery')
+                                        @elseif($order->order_status=='packed' || $order->order_status=='out_for_delivery')
                                             <label class="badge badge-warning">{{str_replace('_',' ',$order->order_status)}}</label>
                                         @elseif($order->order_status=='processed')
                                             <label class="badge badge-warning">{{str_replace('_',' ',$order->order_status)}}</label>
-                                        @elseif($order->order_status=='delivered' || $order->order_status=='confirmed')
+                                        @elseif($order->order_status=='delivered' || $order->order_status=='packaging')
                                             <label class="badge badge-success">{{str_replace('_',' ',$order->order_status)}}</label>
                                         @elseif($order->order_status=='returned')
                                             <label class="badge badge-warning">{{str_replace('_',' ',$order->order_status)}}</label>

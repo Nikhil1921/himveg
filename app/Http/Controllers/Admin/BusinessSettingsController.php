@@ -554,10 +554,10 @@ class BusinessSettingsController extends Controller
             ]),
         ]);
 
-        DB::table('business_settings')->updateOrInsert(['type' => 'order_processing_message'], [
+        DB::table('business_settings')->updateOrInsert(['type' => 'order_packed_message'], [
             'value' => json_encode([
-                'status' => $request['processing_status'],
-                'message' => $request['processing_message'],
+                'status' => $request['packed_status'],
+                'message' => $request['packed_message'],
             ]),
         ]);
 

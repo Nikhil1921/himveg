@@ -71,9 +71,9 @@ class UpdateController extends Controller
                 ])
             ]);
         }
-        if (BusinessSetting::where(['type' => 'order_processing_message'])->first() == false) {
+        if (BusinessSetting::where(['type' => 'order_packed_message'])->first() == false) {
             BusinessSetting::insert([
-                'type' => 'order_processing_message',
+                'type' => 'order_packed_message',
                 'value' => json_encode([
                     'status' => 0,
                     'message' => ''

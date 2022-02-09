@@ -340,17 +340,17 @@
                                                           style="{{Session::get('direction') === "rtl" ? 'margin-right: 0;margin-left: .4375rem;' : 'margin-left: 0;margin-right: .4375rem;'}}">
                                                     </span>{{\App\CPU\translate('pending')}}
                                                     </span>
-                                                    @elseif($order['order_status']=='confirmed')
+                                                    @elseif($order['order_status']=='packaging')
                                                         <span class="badge badge-soft-info ml-2 ml-sm-3">
                                                     <span class="legend-indicator bg-info"
                                                           style="{{Session::get('direction') === "rtl" ? 'margin-right: 0;margin-left: .4375rem;' : 'margin-left: 0;margin-right: .4375rem;'}}">
-                                                    </span>{{\App\CPU\translate('confirmed')}}
+                                                    </span>{{\App\CPU\translate('packaging')}}
                                                     </span>
-                                                    @elseif($order['order_status']=='processing')
+                                                    @elseif($order['order_status']=='packed')
                                                         <span class="badge badge-soft-warning ml-2 ml-sm-3">
                                                     <span class="legend-indicator bg-warning"
                                                           style="{{Session::get('direction') === "rtl" ? 'margin-right: 0;margin-left: .4375rem;' : 'margin-left: 0;margin-right: .4375rem;'}}">
-                                                    </span>{{\App\CPU\translate('processing')}}
+                                                    </span>{{\App\CPU\translate('packed')}}
                                                     </span>
                                                     @elseif($order['order_status']=='out_for_delivery')
                                                         <span class="badge badge-soft-warning ml-2 ml-sm-3">

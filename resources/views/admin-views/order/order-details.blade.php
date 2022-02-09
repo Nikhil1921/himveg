@@ -54,11 +54,11 @@
                             <span class="badge badge-danger ml-2 ml-sm-3 text-capitalize">
                               <span class="legend-indicator bg-info"></span>{{str_replace('_',' ',$order['order_status'])}}
                             </span>
-                        @elseif($order['order_status']=='processing' || $order['order_status']=='out_for_delivery')
+                        @elseif($order['order_status']=='packed' || $order['order_status']=='out_for_delivery')
                             <span class="badge badge-soft-warning ml-2 ml-sm-3 text-capitalize">
                               <span class="legend-indicator bg-warning"></span>{{str_replace('_',' ',$order['order_status'])}}
                             </span>
-                        @elseif($order['order_status']=='delivered' || $order['order_status']=='confirmed')
+                        @elseif($order['order_status']=='delivered' || $order['order_status']=='packaging')
                             <span class="badge badge-soft-success ml-2 ml-sm-3 text-capitalize">
                               <span class="legend-indicator bg-success"></span>{{str_replace('_',' ',$order['order_status'])}}
                             </span>
@@ -106,9 +106,9 @@
                                         <option
                                             value="pending" {{$order->order_status == 'pending'?'selected':''}} > {{\App\CPU\translate('Pending')}}</option>
                                         <option
-                                            value="confirmed" {{$order->order_status == 'confirmed'?'selected':''}} > {{\App\CPU\translate('Confirmed')}}</option>
+                                            value="packaging" {{$order->order_status == 'packaging'?'selected':''}} > {{\App\CPU\translate('Packaging')}}</option>
                                         <option
-                                            value="processing" {{$order->order_status == 'processing'?'selected':''}} >{{\App\CPU\translate('Processing')}} </option>
+                                            value="packed" {{$order->order_status == 'packed'?'selected':''}} >{{\App\CPU\translate('Packed')}} </option>
                                         <option class="text-capitalize"
                                                 value="out_for_delivery" {{$order->order_status == 'out_for_delivery'?'selected':''}} >{{\App\CPU\translate('out_for_delivery')}} </option>
                                         <option

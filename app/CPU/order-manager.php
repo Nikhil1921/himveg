@@ -370,7 +370,7 @@ class OrderManager
         try {
             $fcm_token = $user->cm_firebase_token;
             if ($data['payment_method'] != 'cash_on_delivery') {
-                $value = Helpers::order_status_update_message('confirmed');
+                $value = Helpers::order_status_update_message('packaging');
             } else {
                 $value = Helpers::order_status_update_message('pending');
             }

@@ -57332,7 +57332,7 @@ function updateSuspenseComponent(current, workInProgress, renderExpirationTime) 
         var _nextPrimaryChildren = nextProps.children;
         var currentPrimaryChild = currentPrimaryChildFragment.child;
         var primaryChild = reconcileChildFibers(workInProgress, currentPrimaryChild, _nextPrimaryChildren, renderExpirationTime); // If this render doesn't suspend, we need to delete the fallback
-        // children. Wait until the complete phase, after we've confirmed the
+        // children. Wait until the complete phase, after we've packaging the
         // fallback is no longer needed.
         // TODO: Would it be better to store the fallback fragment on
         // the stateNode?
@@ -60429,7 +60429,7 @@ function throwException(root, returnFiber, sourceFiber, value, renderExpirationT
           sourceFiber.expirationTime = Sync; // Exit without suspending.
 
           return;
-        } // Confirmed that the boundary is in a concurrent mode tree. Continue
+        } // Packaging that the boundary is in a concurrent mode tree. Continue
         // with the normal suspend path.
         //
         // After this we'll use a set of heuristics to determine whether this

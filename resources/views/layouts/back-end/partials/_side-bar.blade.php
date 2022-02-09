@@ -114,26 +114,26 @@
                                         </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/orders/list/confirmed')?'active':''}}">
-                                        <a class="nav-link " href="{{route('admin.orders.list',['confirmed'])}}"
+                                    <li class="nav-item {{Request::is('admin/orders/list/packaging')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.orders.list',['packaging'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('confirmed')}}
+                                            {{\App\CPU\translate('packaging')}}
                                                 <span class="badge badge-soft-success badge-pill ml-1">
-                                                {{\App\Model\Order::where(['order_status'=>'confirmed'])->count()}}
+                                                {{\App\Model\Order::where(['order_status'=>'packaging'])->count()}}
                                             </span>
                                         </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/orders/list/processing')?'active':''}}">
-                                        <a class="nav-link " href="{{route('admin.orders.list',['processing'])}}"
+                                    <li class="nav-item {{Request::is('admin/orders/list/packed')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.orders.list',['packed'])}}"
                                            title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">
-                                            {{\App\CPU\translate('Processing')}}
+                                            {{\App\CPU\translate('Packed')}}
                                                 <span class="badge badge-warning badge-pill ml-1">
-                                                {{\App\Model\Order::where(['order_status'=>'processing'])->count()}}
+                                                {{\App\Model\Order::where(['order_status'=>'packed'])->count()}}
                                             </span>
                                         </span>
                                         </a>

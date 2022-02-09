@@ -137,7 +137,7 @@ class PaypalPaymentController extends Controller
             foreach (CartManager::get_cart_group_ids() as $group_id) {
                 $data = [
                     'payment_method' => 'paypal',
-                    'order_status' => 'confirmed',
+                    'order_status' => 'packaging',
                     'payment_status' => 'paid',
                     'transaction_ref' => \session('transaction_ref'),
                     'order_group_id' => $unique_id,

@@ -139,7 +139,7 @@
                                             <span class="badge badge-danger text-capitalize">
                                                 {{\App\CPU\translate($order['order_status'])}}
                                             </span>
-                                        @elseif($order['order_status']=='confirmed' || $order['order_status']=='processing' || $order['order_status']=='delivered')
+                                        @elseif($order['order_status']=='packaging' || $order['order_status']=='packed' || $order['order_status']=='delivered')
                                             <span class="badge badge-success text-capitalize">
                                                 {{\App\CPU\translate($order['order_status'])}}
                                             </span>

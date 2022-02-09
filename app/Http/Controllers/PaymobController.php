@@ -202,7 +202,7 @@ class PaymobController extends Controller
             foreach (CartManager::get_cart_group_ids() as $group_id) {
                 $data = [
                     'payment_method' => 'paymob_accept',
-                    'order_status' => 'confirmed',
+                    'order_status' => 'packaging',
                     'payment_status' => 'paid',
                     'transaction_ref' => 'tran-' . $unique_id,
                     'order_group_id' => $unique_id,
