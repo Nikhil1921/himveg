@@ -1407,4 +1407,5 @@
   'Passport Size' => 'Passport Size',
   'Passport Size photo' => 'Passport Size photo',
   'shop' => 'Shop',
+  'confirmed' => 'Confirmed',
 );

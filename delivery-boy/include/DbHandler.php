@@ -141,9 +141,11 @@ class DbHandler
                     + sin ( radians('$p->lat') )
                     * sin( radians( s.lat ) )
                     )
-                ) AS distance, CONCAT(f_name, ' ', l_name) AS seller, o.order_status, o.order_amount, o.shipping_cost
+                ) AS distance, CONCAT(s.f_name, ' ', s.l_name) AS seller, o.order_status, o.order_amount, o.shipping_cost, o.shipping_address_data, o.payment_method, o.payment_status, od.product_details, od.qty, od.price, od.tax, od.discount, od.created_at, u.f_name, u.l_name, u.phone
                 FROM orders o
                 INNER JOIN sellers s ON s.id = o.seller_id
+                INNER JOIN order_details od ON od.order_id = o.id
+                INNER JOIN users u ON u.id = o.customer_id
                 WHERE o.order_status = '$p->status'";
         
         if ($p->own != 0) $sql .= " AND o.assigned = '$p->api'";

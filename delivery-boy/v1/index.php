@@ -216,6 +216,10 @@ $app->get('/orders', 'authenticate', function () use ($app)
 
     if($row = $db->orders($get))
     {
+        /* foreach ($row as $k => $v) {
+            $row[$k]['shipping_address_data'] = json_decode($v['shipping_address_data']);
+            $row[$k]['product_details'] = json_decode($v['product_details']);
+        } */
         $response['row'] = $row;
         $response['error'] = false;
         $response['message'] ="Orders list successful.";
