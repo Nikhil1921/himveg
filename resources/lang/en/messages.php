@@ -1408,4 +1408,8 @@
   'Passport Size photo' => 'Passport Size photo',
   'shop' => 'Shop',
   'confirmed' => 'Confirmed',
+  'paytabs' => 'Paytabs',
+  'profile_id' => 'Profile id',
+  'server_key' => 'Server key',
+  'base_url_by_region' => 'Base url by region',
 );
